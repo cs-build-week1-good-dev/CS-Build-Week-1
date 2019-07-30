@@ -96,8 +96,7 @@ DATABASES = {
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASS'),
         'HOST': 'ec2-54-235-96-48.compute-1.amazonaws.com',
-        'PORT': '5432'
-
+        'PORT': config('DB_PORT')
     }
 }
 
