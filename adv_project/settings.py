@@ -91,8 +91,13 @@ WSGI_APPLICATION = 'adv_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASS'),
+        'HOST': 'ec2-54-235-96-48.compute-1.amazonaws.com',
+        'PORT': '5432'
+
     }
 }
 
@@ -151,3 +156,5 @@ STATIC_URL = '/static/'
 
 import django_heroku
 django_heroku.settings(locals())
+
+del DATABASES['default']['OPTIONS']['sslmode']
